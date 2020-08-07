@@ -1,8 +1,10 @@
 package ru.example.boot;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Component;
 
 @ConfigurationProperties(prefix = "my")
+@Component
 public class MyAutoConfigMessage {
     private String messageValue1;
     private String messageValue2;
