@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 //      @ComponentScan
 //      @Configuration
 @SpringBootApplication
+@EnableConfigurationProperties(MyAutoConfigMessage.class)
 public class Application {
     @Value("${name}")
     String name;
@@ -51,4 +53,16 @@ public class Application {
     public String profileMessage() {
         return myMessage.getMessage();
     }
+
+    @Autowired
+    MyAutoConfigMessage autoConfigMessage;
+
+    @RequestMapping("/automsg")
+    public String autoConfMessage() {
+        return autoConfigMessage.getMessageValue1() + "//" +
+                autoConfigMessage.getMessageValue2() + "//" +
+                autoConfigMessage.getMessageValue3();
+    }
+
+
 }
