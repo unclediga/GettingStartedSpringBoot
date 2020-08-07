@@ -33,4 +33,12 @@ public class Application {
     public String helloBean() {
         return message;
     }
+
+    @Autowired
+    MyRandomNumber randomNumber;
+
+    @RequestMapping("/rnd")
+    public String randNum() {
+        return "Random number is " + randomNumber.getNumber();
+    }
 }
