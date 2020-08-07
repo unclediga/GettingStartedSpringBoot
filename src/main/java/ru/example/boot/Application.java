@@ -41,4 +41,14 @@ public class Application {
     public String randNum() {
         return "Random number is " + randomNumber.getNumber();
     }
+// if there are no one profiles provided, then need qualifiers
+//    @Qualifier("myMessageA")
+//    @Qualifier("myMessageB")
+    @Autowired
+    MyMessage myMessage;
+
+    @RequestMapping("/profile")
+    public String profileMessage() {
+        return myMessage.getMessage();
+    }
 }
