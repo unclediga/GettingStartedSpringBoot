@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -41,7 +42,8 @@ public class Application {
     public String randNum() {
         return "Random number is " + randomNumber.getNumber();
     }
-// if there are no one profiles provided, then need qualifiers
+
+    // if there are no one profiles provided, then need qualifiers
 //    @Qualifier("myMessageA")
 //    @Qualifier("myMessageB")
     @Autowired
@@ -60,6 +62,12 @@ public class Application {
         return autoConfigMessage.getMessageValue1() + "//" +
                 autoConfigMessage.getMessageValue2() + "//" +
                 autoConfigMessage.getMessageValue3();
+    }
+
+    @RequestMapping("/cat")
+    @ResponseBody
+    public Cat cat() {
+        return new Cat("CatName", "CatBreed", 2);
     }
 
 
