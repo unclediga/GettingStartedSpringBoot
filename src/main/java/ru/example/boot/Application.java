@@ -4,9 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 @RestController
 // @SpringBootApplication consist of:
@@ -70,5 +72,15 @@ public class Application {
         return new Cat("CatName", "CatBreed", 2);
     }
 
-
+    @RequestMapping("/mustache")
+    public ModelAndView mustache(Model model) {
+        model.addAttribute("company", "Mega Power Inc.");
+        return new ModelAndView("template", model.asMap());
+    }
+    // NOT WORKING ! :-(
+//    @RequestMapping("/mustache")
+//    public String mustache(Model model){
+//        model.addAttribute("company", "Mega Power Inc.");
+//        return "template";
+//    }
 }
