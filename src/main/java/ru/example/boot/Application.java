@@ -21,10 +21,10 @@ public class Application {
         SpringApplication.run(Application.class, args);
     }
 
-    @RequestMapping("/")
-    public String hello() {
-        return "Hello from " + name + "!";
-    }
+//    @RequestMapping("/")
+//    public String hello() {
+//        return "Hello from " + name + "!";
+//    }
 
     @Autowired
     String message;
